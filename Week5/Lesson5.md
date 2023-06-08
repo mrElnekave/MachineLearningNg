@@ -47,3 +47,63 @@ We learnt about the ReLU function, used when features should range more than jus
 You would only use linear activation function if you had a regression problem that goes into the negative numbers.
 
 For the hidden layers, you can use ReLU, research has found that it is faster.
+
+### Why we need activation functions
+
+- What happens if we only use linear activation functions?
+  - The output of the last layer is a linear function of the inputs
+  - A linear function of linear functions is still a linear function
+  - The whole network is equivalent to a single layer
+
+![](./Screenshot%202023-06-06%20182218.png)
+
+In linear algebra, a linear function of a linear function is still a linear function.
+
+## Multiclass classification
+
+- In binary we only need logistic regression, as we needed one curve to separate the two classes.
+- In multiclass, we need to separate the classes, so we need multiple curves. Softmax is used to do this.
+
+### Softmax
+
+We use the softmax to calculate the probability of each class, much like in logistic regression, we use e^z to calculate the probability of the class.
+
+![](./Screenshot%202023-06-06%20183303.png)
+
+### cost function
+
+The cost is just that -log(y_hat) that we had for logistic regression, now we just have to find the correct class, and say that the cost is how far away it was from predicting the correct class.
+
+![](./Screenshot%202023-06-06%20183710.png)
+
+### How to use softmax in a Neural Network
+
+We keep the Neural Network the same, but we change the activation function of the last layer to softmax. That way we still get the possibility of each features, such as a face etc, but in the end gives you the probability of each class.
+
+In tensorflow the only thing we need to change is the activation function of the last layer to softmax.
+
+### Tensorflow specifics
+
+Even though it would be easy to just change the last layers activation function to softmax, this creates a lot of numerical errors because e^x is a very large number or a very small number. So we use a trick to make it more stable.
+
+Instead of getting the probability of each class being true, we get an output of z1 though zn and then we pass the output through the softmax function to get the probability of each class.
+
+### Multilabel classification (multiple classes can be true)
+
+The last node in a mutlilabel classification problem is sigmoid, because we want to know the probability of each class being true, they can for instance all be true. an output of a=[1 1 1]
+
+## Optimizers
+
+### Adam optimizer
+
+The adam optimizer changes the learning rate of each parameter, so that it can learn faster. So if a learning rate is too high, the feature bounces back and forth, the learning rate is lowered. If the feature goes really slowly in the same direction, the learning rate is increased.
+
+### Convolutional layers
+
+In a convolutional layer, each node doesn't look at all the inputs in _a_ (the previous layer), but only a small part of it. This is called a receptive field. It allows it to work much faster, and also not overfit the data. Also forces the network to consider a part if we know its important. Like maybe you want to know what type of show it is, so you look at the bottom right because thats where the symbol is.
+
+### Back prpagation Computational Graph
+
+Its just derivative chainrule, but we calculate from right to left, because multiple nodes on the left can depend on the same node on the right.
+
+![](./Screenshot%202023-06-07%20125854.png)
