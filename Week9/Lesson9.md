@@ -44,3 +44,7 @@ Combines both the user-based and item-based approaches. It is a way of automatic
 Update the x and theta terms simultaneously.
 
 ![](./Screenshot%202023-06-20%20222443.png)
+
+### Notation summary
+
+![](./Screenshot%202023-06-21%20145738.png)
