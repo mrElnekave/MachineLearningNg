@@ -49,6 +49,16 @@ Update the x and theta terms simultaneously.
 
 ![](./Screenshot%202023-06-21%20145738.png)
 
+### Collaborative Filtering summary
+
+- Not a neural network
+- But a bunch of linear regression models
+- What are the weights and biases for a specific user, so we can predict the ratings for that user.
+- What are the features for a specific movie, so we can predict the ratings for that movie for all users.
+
+* The combined cost function looks at all the users and all the movie features, and how the specific users rated the specific movies.
+* You need to regularize both the featuers of the movies and the weights (preferences) of the users as you are learning both at the same time.
+
 ## Content Based Filtering
 
 ### Differences and when to use
@@ -108,6 +118,8 @@ The way to get these greatly reduced number of movies is up to the programmer bu
 - Find similar movies to the recently watched movies by the user.
 - Movies from users favorite genre.
 - Top movies from the past year (In specific country).
+
+**This is called Retrieval and Ranking**
 
 **Now we have a much smaller set of movies to train on!!**
 
